@@ -1,0 +1,46 @@
+.game-layout {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100vh;
+    width: auto;
+    align-content: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.active {
+    background-color: red;
+}
+
+.players {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cells {
+    display: flex;
+    flex-wrap: wrap;
+    width: 606px;
+    height: 606px;
+    border: 1px solid black;
+}
+
+.cell {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+}
