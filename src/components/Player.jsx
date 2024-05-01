@@ -3,9 +3,9 @@ import React from "react";
 const Player = ({name, symbol, isActivePlayer}) => {
   const playerClass = isActivePlayer ? 'active' : '';
   return (
-      <div className={playerClass}>
+      <div className={`player ${playerClass}`}>
         <h2>{name}</h2>
-        <span>{symbol}</span>
+        <h3>{':' + symbol}</h3>
       </div>
   );
 }

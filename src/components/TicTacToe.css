@@ -1,3 +1,10 @@
+:root {
+    --main-bg-color: white;
+    --second-bg-color: lightgray;
+    --main-text-color: black;
+    --main-color: lightgreen;
+}
+
 .game-layout {
     display: flex;
     flex-wrap: wrap;
@@ -5,24 +12,35 @@
     height: 100vh;
     width: auto;
     align-content: center;
+    background-color: var(--main-bg-color);
 }
 
 .title {
-    font-size: 24px;
+    font-size: 50px;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
 }
 
 .active {
-    background-color: red;
+    background-color: var(--main-color);
+    box-shadow: 3px 1px 10px var(--main-color);
 }
 
 .players {
     width: 600px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-bottom: 10px;
+}
+
+.player {
+    padding: 0 10px;
+    color: var(--main-text-color);
+    width: 20%;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
 }
 
 .cells {
@@ -30,13 +48,14 @@
     flex-wrap: wrap;
     width: 606px;
     height: 606px;
-    border: 1px solid black;
+    border: 2px solid var(--main-text-color);
 }
 
 .cell {
+    color: var(--main-text-color);
     width: 200px;
     height: 200px;
-    border: 1px solid black;
+    border: 1px solid var(--main-text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,16 +65,20 @@
 }
 
 .winner-banner, .draw-banner {
+    color: var(--main-text-color);
     position: absolute;
     width: 100%;
-    top: 50%;
+    height: 100px;
+    top: 44%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f1f1f1;
+    background-color: var(--second-bg-color);
     padding: 20px;
-    border: 1px solid whitesmoke;
+    border: 1px solid var(--second-bg-color);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    font-size: 24px;
 }
