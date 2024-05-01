@@ -2,10 +2,8 @@ import React from 'react';
 import './TicTacToe.css';
 import Cells from "./Cells";
 import Players from "./Players";
-
-const Winner = ({name}) => {
-  return <div className="winner-banner">Congratulations {name}!</div>;
-}
+import WinnerBanner from "./WinnerBanner";
+import DrawBanner from "./DrawBanner";
 
 class TicTacToe extends React.Component {
   constructor(props) {
@@ -19,6 +17,7 @@ class TicTacToe extends React.Component {
         [0, 4, 8], [2, 4, 6]
       ],
       isWinner: false,
+      isDraw: false
     }
     this.handleMove = this.handleMove.bind(this);
   }
@@ -44,16 +43,25 @@ class TicTacToe extends React.Component {
     this.setState({currentPlayerIndex: currentPlayerIndex});
   }
 
+  isDraw(cells) {
+    return cells.every((cell) => cell !== '')
+  }
+
   handleMove = (cellId) => {
     if (this.state.isWinner) {
       return;
     }
     const cells = this.state.cells.slice();
     cells[cellId] = this.props.players[this.state.currentPlayerIndex].symbol;
-    let isWinner = this.isWinner(cells);
-    this.setState({isWinner: isWinner});
+    const isWinner = this.isWinner(cells);
     this.updateCells(cells);
     if (isWinner) {
+      this.setState({isWinner: isWinner});
+      return;
+    }
+    const isDraw = this.isDraw(cells);
+    if (isDraw) {
+      this.setState({isDraw: isDraw});
       return;
     }
     this.updateCurrentPlayerIndex(1 - this.state.currentPlayerIndex);
@@ -65,7 +73,8 @@ class TicTacToe extends React.Component {
           <div className="title">Tic Tac Toe</div>
           <Players players={this.props.players} currentPlayerIndex={this.state.currentPlayerIndex}/>
           <Cells cells={this.state.cells} handleMove={this.handleMove}/>
-          {this.state.isWinner ? <Winner name={currentPlayer}/> : null}
+          {this.state.isWinner && <WinnerBanner name={currentPlayer}/>}
+          {this.state.isDraw && <DrawBanner/>}
         </div>
     );
   }

@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-.winner-banner {
+.winner-banner, .draw-banner {
     position: absolute;
     width: 100%;
     top: 50%;
